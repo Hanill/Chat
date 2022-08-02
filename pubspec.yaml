@@ -70,5 +70,5 @@ flutter:
           weight: 700
 
 assets:
-  - assets/Image
+  - assets/Image/Ellipse_8.png
   - assets/fonts

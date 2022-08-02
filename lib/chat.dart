@@ -17,7 +17,45 @@ class _ChatState extends State<Chat> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("채팅방"),
+        backgroundColor: Colors.blueAccent,
+        elevation: 0.0,
+        leading: Row(
+          children: [
+            IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () {
+                print('menu button is clicked');
+              },
+            ),
+            CircleAvatar(
+              backgroundColor: Colors.black,
+              radius: 45,
+              child: Text("프"), //채팅 프로필 나오는 부분
+            ),
+            //SizedBox(width: 32), //여백
+            Text(
+              "채팅방",
+              style: TextStyle(
+                fontFamily: "KoreanFont",
+                fontSize: 40,
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              print('shopping cart button is clicked');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              print('search button is clicked');
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
