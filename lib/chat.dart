@@ -1,8 +1,9 @@
 import 'package:chat/chat_message.dart';
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 class Chat extends StatefulWidget {
+  const Chat({Key? key}) : super(key: key);
+
   @override
   _ChatState createState() => _ChatState();
 }
@@ -16,46 +17,41 @@ class _ChatState extends State<Chat> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        elevation: 0.0,
-        leading: Row(
-          children: [
-            IconButton(
-              icon: Icon(Icons.arrow_back),
-              onPressed: () {
-                print('menu button is clicked');
-              },
-            ),
-            CircleAvatar(
-              backgroundColor: Colors.black,
-              radius: 45,
-              child: Text("프"), //채팅 프로필 나오는 부분
-            ),
-            //SizedBox(width: 32), //여백
-            Text(
-              "채팅방",
-              style: TextStyle(
-                fontFamily: "KoreanFont",
-                fontSize: 40,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(120.0),
+        child: AppBar(
+          backgroundColor: Colors.blueAccent,
+          elevation: 0.0,
+          leading: Row(
+            children: [
+              IconButton(
+                icon: Icon(Icons.arrow_back),
+                onPressed: () {
+                },
               ),
+              CircleAvatar(
+                backgroundColor: Colors.black,
+                radius: 35,
+                child: Text("프"), //채팅 프로필 나오는 부분
+              ),
+              SizedBox(width: 32), //여백
+              Text(
+                "채팅방",
+                style: TextStyle(
+                  fontFamily: "KoreanFont",
+                  fontSize: 40,
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+              },
             ),
           ],
         ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              print('shopping cart button is clicked');
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              print('search button is clicked');
-            },
-          ),
-        ],
       ),
       body: Column(
         children: [
@@ -83,7 +79,7 @@ class _ChatState extends State<Chat> {
                   style: TextButton.styleFrom(
                     //primary: Colors.black,
                     //글자색
-                    onSurface: Colors.amberAccent,
+                    disabledBackgroundColor: Colors.amberAccent,
                     //온프레스 값이 비어 있을 때 색상
                     backgroundColor: Colors.green,
                     shadowColor: Colors.black,
@@ -103,7 +99,6 @@ class _ChatState extends State<Chat> {
   }
 
   void _handleSubmitted(String text) {
-    Logger().d(text);
     _textEditingController.clear();
     ChatMessage newChat = ChatMessage(text);
     setState(() {
