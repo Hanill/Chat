@@ -15,6 +15,7 @@ class ChatMessage extends StatelessWidget {
       child: Container(
         width: 638,
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Column(
               children: [
@@ -23,14 +24,13 @@ class ChatMessage extends StatelessWidget {
                   child: Text("프"), //채팅 프로필 나오는 부분
                   radius: 40,
                 ),
-                SizedBox() //프로필 아래 여백
+                Expanded(child: SizedBox()) //프로필 아래 여백
               ],
             ),
             SizedBox(
               width: 32, //프로필, 채팅 사이 여백
             ),
             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "상대 이름",

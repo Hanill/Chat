@@ -26,8 +26,7 @@ class _ChatState extends State<Chat> {
             children: [
               IconButton(
                 icon: Icon(Icons.arrow_back),
-                onPressed: () {
-                },
+                onPressed: () {},
               ),
               CircleAvatar(
                 backgroundColor: Colors.black,
@@ -47,8 +46,7 @@ class _ChatState extends State<Chat> {
           actions: [
             IconButton(
               icon: Icon(Icons.search),
-              onPressed: () {
-              },
+              onPressed: () {},
             ),
           ],
         ),
@@ -65,30 +63,50 @@ class _ChatState extends State<Chat> {
           Container(
             child: Row(
               children: [
-                Expanded(
-                  child: TextField(
-                    controller: _textEditingController,
-                    decoration: InputDecoration(hintText: "메세지를 입력하세요"),
-                    onSubmitted: _handleSubmitted,
+                SizedBox(
+                  width: 104,
+                  height: 104,
+                  child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color(0xffF1F1F5),
+                    ),
+                    child: Text(""),
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    _handleSubmitted(_textEditingController.text);
-                  },
-                  style: TextButton.styleFrom(
-                    //primary: Colors.black,
-                    //글자색
-                    disabledBackgroundColor: Colors.amberAccent,
-                    //온프레스 값이 비어 있을 때 색상
-                    backgroundColor: Colors.green,
-                    shadowColor: Colors.black,
-                    //그림자 색상
-                    textStyle: TextStyle(
-                        fontFamily: "KoreanFont", fontWeight: FontWeight.w400),
-                    shape: BeveledRectangleBorder(),
+                SizedBox(
+                  width: 24,
+                ),
+                Flexible(
+                  child: SizedBox(
+                    height: 104,
+                    child: TextField(
+                      controller: _textEditingController,
+                      decoration: InputDecoration(
+                        border: InputBorder.none, //textfield 밑에 파란선 제거
+                        hintText: "메시지를 입력하세요",
+                        hintStyle: TextStyle(
+                            fontFamily: "KoreanFont",
+                            fontSize: 28,
+                            color: Color(0xff767676)),
+                      ),
+                      style: TextStyle(fontFamily: "KoreanFont", fontSize: 28),
+                      onSubmitted: _handleSubmitted,
+                    ),
                   ),
-                  child: Text("전송"),
+                ),
+                SizedBox(
+                  width: 104,
+                  height: 104,
+                  child: TextButton(
+                    onPressed: () {
+                      _handleSubmitted(_textEditingController.text);
+                    },
+                    style: TextButton.styleFrom(
+                      backgroundColor: Color(0xff909090),
+                    ),
+                    child: Text(""),
+                  ),
                 )
               ],
             ),
