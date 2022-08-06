@@ -1,4 +1,4 @@
-import 'package:chat/chat.dart';
+import 'package:chat/chat_mainpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,12 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      home: Chat(),
-      /*theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),*/
+      title: '채팅방',
+      home: ChatMain(),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:chat/chat_message.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Chat extends StatefulWidget {
   const Chat({Key? key}) : super(key: key);
@@ -15,104 +16,99 @@ class _ChatState extends State<Chat> {
 
   @override
   Widget build(BuildContext context) {
+    final double statusBarHeight = MediaQuery.of(context).padding.top;
+    final double sizeWidth = MediaQuery.of(context).size.width;
+    final double sizeHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(120.0),
-        child: AppBar(
-          backgroundColor: Colors.blueAccent,
-          elevation: 0.0,
-          leading: Row(
-            children: [
-              IconButton(
-                icon: Icon(Icons.arrow_back),
-                onPressed: () {},
-              ),
-              CircleAvatar(
-                backgroundColor: Colors.black,
-                radius: 35,
-                child: Text("프"), //채팅 프로필 나오는 부분
-              ),
-              SizedBox(width: 32), //여백
-              Text(
-                "채팅방",
-                style: TextStyle(
-                  fontFamily: "KoreanFont",
-                  fontSize: 40,
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
+      body: Column(children: [
+        Padding(padding: EdgeInsets.only(top: statusBarHeight)),
+        Stack(
+          children: [
+            SvgPicture.asset("assets/images/gnb.svg", width: sizeWidth),
+            Positioned(
+                left: sizeWidth * 0.064,
+                top: sizeHeight * 0.017,
+                child: GestureDetector(
+                    behavior: HitTestBehavior.translucent,
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: SvgPicture.asset("assets/icons/backarrow.svg",
+                        width: sizeWidth * 0.0746))),
+            Positioned(
+                left: sizeWidth * 0.165,
+                top: sizeHeight * 0.015,
+                child: CircleAvatar(radius: sizeWidth * 0.046)),
+            Positioned(
+              left: sizeWidth * 0.301,
+              top: sizeHeight * 0.017,
+              child: Text("채팅방",
+                  style: TextStyle(
+                      fontFamily: "KoreanFont",
+                      color: Color(0xff191919),
+                      fontSize: sizeWidth * 0.053,
+                      fontWeight: FontWeight.w400)),
             ),
+            Positioned(
+              left: sizeWidth * 0.861,
+              top: sizeHeight * 0.02,
+              child: Container(
+                width: sizeWidth * 0.074,
+                height: sizeWidth * 0.074,
+                color: Colors.purpleAccent,
+              ),
+            )
           ],
         ),
-      ),
-      body: Column(
-        children: [
-          Expanded(
-              child: ListView.builder(
-            itemBuilder: (context, index) {
-              return _chats[index];
-            },
-            itemCount: _chats.length,
-          )),
-          Container(
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 104,
-                  height: 104,
-                  child: TextButton(
-                    onPressed: () {},
-                    style: TextButton.styleFrom(
-                      backgroundColor: Color(0xffF1F1F5),
-                    ),
-                    child: Text(""),
+        Expanded(
+            child: ListView.builder(
+          itemBuilder: (context, index) {
+            return _chats[index];
+          },
+          itemCount: _chats.length,
+        )),
+        SizedBox(
+          child: Row(children: [
+            GestureDetector(
+                onTap: () {},
+                child: Container(
+                    color: Color(0xffF1F1F5),
+                    width: sizeWidth * 0.138,
+                    height: sizeWidth * 0.138)),
+            Expanded(
+              child: SizedBox(
+                height: sizeHeight * 0.064,
+                child: TextField(
+                  controller: _textEditingController,
+                  textAlign: TextAlign.center,
+                  decoration: InputDecoration(
+                    border: InputBorder.none, //텍스트필드 밑에 파란선 제거
+                    hintText: "메시지를 입력하세요",
+                    hintStyle: TextStyle(
+                        fontFamily: "KoreanFont",
+                        fontSize: sizeWidth * 0.037,
+                        color: Color(0xff767676)),
                   ),
+                  style: TextStyle(
+                      fontFamily: "KoreanFont", fontSize: sizeHeight * 0.037),
+                  onSubmitted: _handleSubmitted,
                 ),
-                SizedBox(
-                  width: 24,
-                ),
-                Flexible(
-                  child: SizedBox(
-                    height: 104,
-                    child: TextField(
-                      controller: _textEditingController,
-                      decoration: InputDecoration(
-                        border: InputBorder.none, //textfield 밑에 파란선 제거
-                        hintText: "메시지를 입력하세요",
-                        hintStyle: TextStyle(
-                            fontFamily: "KoreanFont",
-                            fontSize: 28,
-                            color: Color(0xff767676)),
-                      ),
-                      style: TextStyle(fontFamily: "KoreanFont", fontSize: 28),
-                      onSubmitted: _handleSubmitted,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 104,
-                  height: 104,
-                  child: TextButton(
-                    onPressed: () {
-                      _handleSubmitted(_textEditingController.text);
-                    },
-                    style: TextButton.styleFrom(
-                      backgroundColor: Color(0xff909090),
-                    ),
-                    child: Text(""),
-                  ),
-                )
-              ],
+              ),
             ),
-          ),
-        ],
-      ),
+            GestureDetector(
+              onTap: () {
+                _handleSubmitted(_textEditingController.text);
+              },
+              child: Container(
+                  color: Color(0xff909090),
+                  width: sizeWidth * 0.138,
+                  height: sizeWidth * 0.138),
+            ),
+          ]),
+        ),
+      ]),
     );
   }
 

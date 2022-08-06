@@ -10,67 +10,46 @@ class ChatMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Container(
-        width: 638,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    final double sizeWidth = MediaQuery.of(context).size.width;
+    final double sizeHeight = MediaQuery.of(context).size.height;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: [
+        Stack(
           children: [
-            Column(
-              children: [
-                CircleAvatar(
-                  backgroundColor: Colors.amberAccent,
-                  child: Text("프"), //채팅 프로필 나오는 부분
-                  radius: 40,
-                ),
-                Expanded(child: SizedBox()) //프로필 아래 여백
-              ],
-            ),
-            SizedBox(
-              width: 32, //프로필, 채팅 사이 여백
-            ),
-            Column(
-              children: [
-                Text(
-                  "상대 이름",
+            Positioned(
+                left: sizeWidth * 0.464,
+                width: sizeWidth * 0.08,
+                height: sizeWidth * 0.08,
+                child: Container(color: Color(0xffEEEEEE))),
+            Container(
+                margin: EdgeInsets.fromLTRB(
+                    0, 0, sizeWidth * 0.064, sizeHeight * 0.014),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(sizeWidth * 0.021),
+                    color: Color(0xffEEEEEE)),
+                width: sizeWidth * 0.544,
+                height: sizeHeight * 0.073),
+            Positioned(
+              left: sizeWidth * 0.026,
+              top: sizeHeight * 0.012,
+              bottom: sizeHeight * 0.012,
+              child: SizedBox(
+                width: sizeWidth * 0.512,
+                child: Text(
+                  txt,
                   style: TextStyle(
-                    fontFamily: "KoreanFont",
-                    fontSize: 24,
-                    color: Color(0xff191919),
-                  ),
+                      fontFamily: "KoreanFont",
+                      fontSize: sizeWidth * 0.037,
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xff000000)),
                 ),
-                Stack(
-                  children: [
-                    ClipRRect(
-                      //borderRadius: BorderRadius.circular(8.0),
-                      child: Container(width: 408, color: Colors.blue),
-                    ),
-                      Positioned(
-                        bottom: 20,
-                        left: 20,
-                        right: 4,
-                        top: 20,
-                        child: Container(
-                          width: 384,
-                          child: Text(
-                            txt,
-                            style:
-                            TextStyle(
-                                fontFamily: "KoreanFont",
-                                fontSize: 28,
-                                color: Color(0xff000000)),
-                          ),
-                        ),
-                      )
-                  ],
-                ),
-                SizedBox(width: 24), //여백
-              ],
+              ),
             ),
           ],
         ),
-      ),
+      ],
     );
   }
 }
