@@ -8,7 +8,7 @@ class ChatMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double statusBarHeight = MediaQuery.of(context).padding.top;
-    final  double sizeWidth = MediaQuery.of(context).size.width;
+    final double sizeWidth = MediaQuery.of(context).size.width;
     final double sizeHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
@@ -56,23 +56,29 @@ class ChatMain extends StatelessWidget {
               left: sizeWidth * 0.037,
               top: sizeHeight * 0.016,
               bottom: sizeHeight * 0.015,
-              child: SvgPicture.asset(
-                "assets/icons/search",
-                width: sizeWidth * 0.074,
+              child: Icon(
+                Icons.search,
+                size: sizeWidth * 0.074,
               ),
             ),
             Positioned(
               left: sizeWidth * 0.128,
-              top: sizeHeight * 0.015,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "채팅방을 검색하세요",
-                  hintStyle: TextStyle(
-                      fontFamily: "KoreanFont",
-                      color: Color(0xff767676),
-                      fontSize: sizeWidth * 0.037,
-                      fontWeight: FontWeight.w400),
+              top: sizeHeight * 0.003,
+              child: SizedBox(
+                width: sizeWidth * 0.690,
+                height: sizeHeight * 0.259,
+                child: Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "채팅방을 검색하세요",
+                      hintStyle: TextStyle(
+                          fontFamily: "KoreanFont",
+                          color: Color(0xff767676),
+                          fontSize: sizeWidth * 0.037,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -81,7 +87,7 @@ class ChatMain extends StatelessWidget {
         SizedBox(
           height: sizeHeight * 0.03,
         ),
-        Stack(
+        Row(
           children: [
             SizedBox(width: sizeWidth * 0.064),
             Text("최근 메시지",
@@ -89,8 +95,10 @@ class ChatMain extends StatelessWidget {
                     fontFamily: "KoreanFont",
                     fontSize: sizeWidth * 0.048,
                     fontWeight: FontWeight.w700)),
-            SizedBox(width: sizeWidth * 0.064),
-            SvgPicture.asset("assets/icons/dot3.svg", width: 0.074)
+            SizedBox(width: sizeWidth * 0.568),
+            GestureDetector(
+                onTap: () {},
+                child: Icon(Icons.more_horiz, size: sizeWidth * 0.074))
           ],
         ),
         SizedBox(
@@ -103,10 +111,9 @@ class ChatMain extends StatelessWidget {
           },
           child: Stack(
             children: [
-              Container(
+              SizedBox(
                 width: sizeWidth * 0.872,
                 height: sizeHeight * 0.06,
-                color: Colors.green,
               ),
               CircleAvatar(radius: sizeWidth * 0.06),
               Positioned(
@@ -157,7 +164,36 @@ class ChatMain extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(height: sizeHeight * 0.024),
+        Container(
+            margin: EdgeInsets.fromLTRB(sizeWidth * 0.226, sizeHeight * 0.018,
+                sizeWidth * 0.064, sizeHeight * 0.024),
+            color: Color(0xffEDEDED),
+            width: sizeWidth * 0.709,
+            height: sizeHeight * 0.001),
       ]),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/icons/home.svg"), label: ""),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/icons/navigationpinkbox.svg"),
+              label: ""),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/icons/navigationpinkbox.svg"),
+              label: ""),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/icons/bookmark.svg"), label: ""),
+          BottomNavigationBarItem(
+              icon: SvgPicture.asset("assets/icons/profile.svg"), label: ""),
+        ],
+        onTap: (index) {
+          _idx = index;
+        },
+        currentIndex: _idx,
+      ),
     );
   }
 }
+
+int _idx = 0;

@@ -35,8 +35,7 @@ class _ChatState extends State<Chat> {
                     onTap: () {
                       Navigator.pop(context);
                     },
-                    child: SvgPicture.asset("assets/icons/backarrow.svg",
-                        width: sizeWidth * 0.0746))),
+                    child: Icon(Icons.arrow_back, size: sizeWidth * 0.0746))),
             Positioned(
                 left: sizeWidth * 0.165,
                 top: sizeHeight * 0.015,
@@ -73,18 +72,30 @@ class _ChatState extends State<Chat> {
           child: Row(children: [
             GestureDetector(
                 onTap: () {},
-                child: Container(
-                    color: Color(0xffF1F1F5),
-                    width: sizeWidth * 0.138,
-                    height: sizeWidth * 0.138)),
+                child: Stack(
+                  children: [
+                    Container(
+                        color: Color(0xffF1F1F5),
+                        width: sizeWidth * 0.138,
+                        height: sizeWidth * 0.138),
+                    Positioned(
+                      left: sizeWidth * 0.053,
+                      top: sizeWidth * 0.053,
+                      child: Icon(
+                        Icons.add,
+                        size: sizeWidth * 0.032,
+                      ),
+                    )
+                  ],
+                )),
             Expanded(
               child: SizedBox(
                 height: sizeHeight * 0.064,
                 child: TextField(
                   controller: _textEditingController,
-                  textAlign: TextAlign.center,
                   decoration: InputDecoration(
                     border: InputBorder.none, //텍스트필드 밑에 파란선 제거
+                    contentPadding: EdgeInsets.only(bottom: sizeHeight * 0.032),
                     hintText: "메시지를 입력하세요",
                     hintStyle: TextStyle(
                         fontFamily: "KoreanFont",
