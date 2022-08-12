@@ -59,6 +59,7 @@ flutter:
     - assets/images/
     - assets/fonts/
     - assets/icons/
+    - assets/svg/
   fonts:
     - family: EnglishFont
       fonts:

@@ -1,4 +1,5 @@
 import 'package:chat/chat.dart';
+import 'package:chat/trade_main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -16,7 +17,7 @@ class ChatMain extends StatelessWidget {
         Padding(padding: EdgeInsets.only(top: statusBarHeight)),
         Stack(
           children: [
-            SvgPicture.asset("assets/images/gnb.svg", width: sizeWidth),
+            SvgPicture.asset("assets/svg/gnb.svg", width: sizeWidth),
             Positioned(
                 left: sizeWidth * 0.064,
                 top: sizeHeight * 0.009,
@@ -49,7 +50,7 @@ class ChatMain extends StatelessWidget {
           children: [
             SvgPicture.asset(
               //채팅방 검색창
-              "assets/images/Rectangle 30.svg",
+              "assets/svg/Rectangle 30.svg",
               width: sizeWidth * 0.872,
             ),
             Positioned(
@@ -171,21 +172,26 @@ class ChatMain extends StatelessWidget {
             color: Color(0xffEDEDED),
             width: sizeWidth * 0.709,
             height: sizeHeight * 0.001),
+        GestureDetector(onTap: (){
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => TradeMain()));
+        },
+            child: Container(width: 50,height: 50,color: Colors.blueAccent))
       ]),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/home.svg"), label: ""),
+              icon: SvgPicture.asset("assets/svg/home.svg"), label: ""),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/navigationpinkbox.svg"),
+              icon: SvgPicture.asset("assets/svg/navigationpinkbox.svg"),
               label: ""),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/navigationpinkbox.svg"),
+              icon: SvgPicture.asset("assets/svg/navigationpinkbox.svg"),
               label: ""),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/bookmark.svg"), label: ""),
+              icon: SvgPicture.asset("assets/svg/bookmark.svg"), label: ""),
           BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/icons/profile.svg"), label: ""),
+              icon: SvgPicture.asset("assets/svg/profile.svg"), label: ""),
         ],
         onTap: (index) {
           _idx = index;

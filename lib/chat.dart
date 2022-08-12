@@ -26,7 +26,7 @@ class _ChatState extends State<Chat> {
         Padding(padding: EdgeInsets.only(top: statusBarHeight)),
         Stack(
           children: [
-            SvgPicture.asset("assets/images/gnb.svg", width: sizeWidth),
+            SvgPicture.asset("assets/svg/gnb.svg", width: sizeWidth),
             Positioned(
                 left: sizeWidth * 0.064,
                 top: sizeHeight * 0.017,
