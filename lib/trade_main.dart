@@ -17,10 +17,6 @@ class TradeMain extends StatelessWidget {
           children: [
             SvgPicture.asset("assets/svg/gnb.svg", width: sizeWidth),
             Positioned(
-                left: sizeWidth * 0.064,
-                top: sizeHeight * 0.009,
-                child: CircleAvatar(radius: sizeWidth * 0.06)),
-            Positioned(
               left: sizeWidth * 0.0946,
               top: sizeHeight * 0.0197,
               child: Text("거래 게시판",
@@ -37,10 +33,10 @@ class TradeMain extends StatelessWidget {
         ),
         Row(
           children: [
-            SizedBox(width: sizeWidth*0.064),
+            SizedBox(width: sizeWidth * 0.064),
             Container(
-              margin:
-                  EdgeInsets.fromLTRB(sizeWidth * 0.064, sizeHeight * 0.0172, 0, 0),
+              margin: EdgeInsets.fromLTRB(
+                  sizeWidth * 0.064, sizeHeight * 0.0172, 0, 0),
               child: SizedBox(
                   width: sizeWidth * 0.546,
                   height: sizeHeight * 0.0221,
@@ -56,8 +52,28 @@ class TradeMain extends StatelessWidget {
                     ),
                   )),
             ),
-            SizedBox(width: sizeWidth*0.053),
+            SizedBox(width: sizeWidth * 0.053),
             SvgPicture.asset("assets/svg/search2.svg")
+          ],
+        ),
+        SizedBox(height: sizeHeight * 0.017),
+        SizedBox(
+          width: sizeWidth * 0.1614,
+          height: sizeHeight * 0.0284,
+          child: Text("물품거래",
+              style: TextStyle(
+                  fontFamily: "KoreanFont",
+                  color: Color(0xff000000),
+                  fontSize: sizeWidth * 0.0426,
+                  fontWeight: FontWeight.w400)),
+        ),
+        SizedBox(
+          height: sizeHeight * 0.035,
+        ),
+        Stack(
+          children: [
+            Container(color: Colors.black, width: 0.872, height: 0.416),
+
           ],
         )
       ]),
