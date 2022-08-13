@@ -1,4 +1,4 @@
-import 'package:chat/chat_message.dart';
+import 'package:chat/widget/chat_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

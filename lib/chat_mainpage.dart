@@ -1,5 +1,6 @@
-import 'package:chat/chat.dart';
+import 'package:chat/widget/chat.dart';
 import 'package:chat/trade_main.dart';
+import 'package:chat/widget/navigationbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -178,28 +179,8 @@ class ChatMain extends StatelessWidget {
         },
             child: Container(width: 50,height: 50,color: Colors.blueAccent))
       ]),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/svg/home.svg"), label: ""),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/svg/navigationpinkbox.svg"),
-              label: ""),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/svg/navigationpinkbox.svg"),
-              label: ""),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/svg/bookmark.svg"), label: ""),
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset("assets/svg/profile.svg"), label: ""),
-        ],
-        onTap: (index) {
-          _idx = index;
-        },
-        currentIndex: _idx,
-      ),
+      bottomNavigationBar: NaviBar()
     );
   }
 }
 
-int _idx = 0;
