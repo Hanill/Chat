@@ -1,4 +1,5 @@
 import 'package:chat/trade_stuff.dart';
+import 'package:chat/trade_talent.dart';
 import 'package:chat/widget/more.dart';
 import 'package:chat/widget/navigationbar.dart';
 import 'package:chat/widget/trade_box.dart';
@@ -85,7 +86,11 @@ class TradeMain extends StatelessWidget {
             ),
             TradeBox(),
             SizedBox(height: sizeHeight * 0.024),
-            More(),
+            GestureDetector(onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TradeSf()));
+            },
+                child: More()),
             SizedBox(height: sizeHeight * 0.032),
             Row(
               children: [
@@ -106,7 +111,12 @@ class TradeMain extends StatelessWidget {
             SizedBox(height: sizeHeight * 0.035),
             TradeBox(),
             SizedBox(height: sizeHeight * 0.024),
-            More(),
+            GestureDetector(
+                onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TradeTal()));
+            },
+                child: More()),
           ],
         ),
       ),
