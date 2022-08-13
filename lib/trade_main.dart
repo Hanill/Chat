@@ -1,4 +1,5 @@
 import 'package:chat/trade_stuff.dart';
+import 'package:chat/widget/more.dart';
 import 'package:chat/widget/navigationbar.dart';
 import 'package:chat/widget/trade_box.dart';
 import 'package:flutter/material.dart';
@@ -84,18 +85,7 @@ class TradeMain extends StatelessWidget {
             ),
             TradeBox(),
             SizedBox(height: sizeHeight * 0.024),
-            Container(
-              padding: EdgeInsets.fromLTRB(sizeWidth * 0.376,
-                  sizeHeight * 0.012, sizeWidth * 0.376, sizeHeight * 0.012),
-              width: sizeWidth * 0.872,
-              height: sizeHeight * 0.052,
-              color: Color(0xffD9D9D9),
-              child: Text("더보기",
-                  style: TextStyle(
-                      fontFamily: "KoreanFont",
-                      fontSize: sizeWidth * 0.0426,
-                      fontWeight: FontWeight.w400)),
-            ),
+            More(),
             SizedBox(height: sizeHeight * 0.032),
             Row(
               children: [
@@ -116,18 +106,7 @@ class TradeMain extends StatelessWidget {
             SizedBox(height: sizeHeight * 0.035),
             TradeBox(),
             SizedBox(height: sizeHeight * 0.024),
-            Container(
-              padding: EdgeInsets.fromLTRB(sizeWidth * 0.376,
-                  sizeHeight * 0.012, sizeWidth * 0.376, sizeHeight * 0.012),
-              width: sizeWidth * 0.872,
-              height: sizeHeight * 0.052,
-              color: Color(0xffD9D9D9),
-              child: Text("더보기",
-                  style: TextStyle(
-                      fontFamily: "KoreanFont",
-                      fontSize: sizeWidth * 0.0426,
-                      fontWeight: FontWeight.w400)),
-            ),
+            More(),
           ],
         ),
       ),
